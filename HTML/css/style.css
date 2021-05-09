@@ -1,0 +1,672 @@
+/* ここから下に記載していく */
+@charset "utf-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:800,400);
+
+body {
+    margin: 0;
+}
+
+.main_wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display:none;
+}
+/*--------------- 
+    CommonCSS
+-----------------*/
+.txt_center {
+    text-align: center;
+}
+
+.box_left {
+    margin-right: auto;
+}
+
+.box_right {
+    margin-left: auto;
+}
+
+.line_space {
+    line-height: 1.75;
+}
+
+.animationTarget {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 1s;
+}
+
+.animationShow {
+    opacity: 1;
+    transform: none;
+}
+
+/*--------------- 
+    Header, Menu 
+-----------------*/
+.header {
+    width: 1200px;
+    background-color: white;
+    /* メニューバー固定 */
+    /*position: fixed;
+    z-index: 10;*/
+}
+
+.header_wrapper{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+}
+
+.header_list {
+    display: flex;
+}
+
+.header_item {
+    margin: 0 50px 0 0;
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: black;
+}
+
+/*-----------
+    TOP 
+-------------*/
+.top_page {
+    padding: 200px 0;
+    background-image: url(../img/mainbg.png);
+    background-size: cover;
+    color: white;
+}
+
+.top_page h1 {
+    font-size: 40px;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
+
+.top_page p {
+    font-size: 32px;
+}
+
+/*-----------
+    ABOUT
+-------------*/
+.about_page {
+    padding-top: 60px;
+    padding-bottom: 80px; 
+}
+
+.about_page h2 {
+    padding-bottom: 30px;
+    color: #ffd61a;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.about_page h3 {
+    padding-bottom: 60px;
+    font-size:16px;
+}
+
+.about_page p {
+    margin-bottom: 40px;
+    font-size:16px;
+}
+
+/* 4枚並べて表示する場合コメントを外す
+.imgBox {
+    padding-top: 40px;
+    display: flex;
+}
+
+.imgBox img{
+    width: 100%;    
+}
+*/
+/*
+.about_slide {
+    display: none;
+}
+
+.active {
+    display: block;
+}*/
+
+.slide img {
+    margin: 0 auto;
+    height: auto;
+}
+
+.index_btn_wrapper {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.index_btn {
+    display: inline-block;
+    color: #ffffff;
+    background-color: #707070;
+    width: 40px;
+    padding: 6px 0;
+    margin: 0 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/*------------
+    COURSE
+--------------*/
+.course_heading h2 {
+    font-size:18px;
+    font-weight:bold;
+    padding-bottom: 30px;
+}
+
+.course_heading p {
+    padding-bottom: 60px;
+}
+
+.course_detail {
+    background-color: #fafafa;
+    display:flex;
+    width: 100%;
+    height: 400px;
+}
+
+.course_picture img {
+    width: 600px;
+    height: 400px;
+}
+
+.course_contents {
+    width: 600px;    
+}
+
+.course_contents p {
+    width: 480px;
+    font-size: 16px;
+}
+
+.course_contents h2 {
+    padding-bottom: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.contents_right {
+    padding: 120px 50px;
+}
+
+.contents_left {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    padding-left: 120px;
+}
+
+/*-----------
+    NEWS
+-------------*/
+.news_page {
+    margin: 60px 0;
+}
+
+.news_heading {
+    margin: 0 0 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffd61a;
+}
+
+.news_wrapper {
+    /*ニュース記事を3つ中央に寄せて出力*/
+    max-width: 960px;
+    margin: auto;
+}
+
+.news_title {
+    margin: 0 0 60px 0;
+    font-size: 16px;
+}
+
+.news_list {
+    display: flex;
+    margin: 0 0 60px;
+}
+
+.news_item {
+    width: 33.333%;
+    padding-right: 30px;
+}
+
+.news_item:hover {
+    cursor: pointer;
+}
+
+.news_eyecatch {
+    margin: 0 0 30px;
+}
+
+.news_date {
+    margin: 0 0 24px;
+    font-size: 14px;
+}
+
+.news_content {
+    font-size: 14px;
+}
+
+/*　旧Moreボタン*/
+.btn {
+    display: block;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 60px;
+    padding: 21px 0;
+    background-color: #ffd61a;
+    color: white;
+    font-size: 18px;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.btn:hover {
+    opacity: 1.0;
+}
+*/
+
+/*　改良型Moreボタン 
+.more h3 {
+    color: #fff;
+    font-family: Raleway, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+}
+  
+.button_more {
+    position: relative;
+    height: 60px;
+    width: 300px;
+    background: #ffd61a;
+    border-radius: 8px;
+    text-align: center;
+    margin: 60px auto 0 auto;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+  
+.more, .arrow_more {
+    display: inline-block;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+  
+.more {
+    text-transform: uppercase;
+    margin: 14px 0 0 26px;
+}
+  
+.arrow_more {
+    position: relative;
+    top: -3px;
+    opacity: 0;
+}
+  
+.line_more {
+    height: 3px;
+    width: 20px;
+    border-radius: 6px;
+    background: #fff;
+}
+  
+.top_more {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+  
+.button_more {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin-top: 10px;
+}
+  
+.button_more:active {
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    transform: scale(1.3);
+}
+  
+.button_more.hover .more {
+    -webkit-transform: translateX(-90px);
+    -moz-transform: translateX(-90px);
+    transform: translateX(-90px);
+    opacity: 0; 
+}
+  
+.button_more.hover .arrow_more {
+    -webkit-transform: translateX(-70px);
+    -moz-transform: translateX(-70px);
+    transform: translateX(-70px);
+    opacity: 1;
+}
+  
+.button_more.active .arrow_more {
+    opacity: 1;
+    -webkit-transform: rotate(90deg) translateY(70px);
+    -moz-transform: rotate(90deg) translateY(70px);
+    transform: rotate(90deg) translateY(70px);
+}
+  
+.button_more.active {
+    background: #082eaa;
+}
+  
+.button_more.active .more {
+    opacity: 0;
+}
+  
+.button_more.active .top_more {
+    width: 34px;
+}
+  
+.button_more.active .bottom_more {
+   margin: 14px 0 0 12px;
+}
+*/
+
+/*------------
+    ACCESSS
+--------------*/
+.access_page {
+    background-color: #fafafa;
+    padding-bottom: 26px; 
+}
+
+.access_heading {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 60px 0 30px 0;
+}
+
+.access_map {
+    margin-bottom: 60px;
+}
+
+.access_title {
+    font-size: 16px;
+    margin-bottom: 60px;
+}
+
+.access_table {
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.table_list {
+    height: 34px;
+}
+
+.table_item {
+    width: 160px;
+}
+
+/*------------
+    CONTACT 
+--------------*/
+.contact_page {
+    width: 640px;
+    margin: auto;
+    margin-bottom: 140px;
+}
+
+.contact_heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 60px 0 30px 0;
+}
+
+.contact_notice {
+    font-size: 16px;
+    margin: 30px 0 70px 0;
+}
+
+.form_list {
+    display:flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.form_title{
+    width: 150px;
+    font-size: 16px;
+    padding: 8px 64px 8px 16px;
+    text-align: left;
+    border-top: solid 1px #707070;
+    border-right: solid 1px #707070;
+    border-bottom: solid 1px #707070;
+}
+
+.form_item {
+    width: 380px;
+    border-top: solid 1px #707070;
+    border-bottom: solid 1px #707070;
+}
+
+/*inputフォームのサイズ*/
+.form_parts {
+    box-sizing: border-box;
+    width: 300px;
+    font-size: 16px;
+    margin: 8px 0 8px 8px;
+    padding: 3px;
+}
+
+.form_dropdown {
+    width: 300px;
+    margin: 8px 0 8px 8px;
+    padding: 8px 3px;
+}
+
+.form_textbox {
+    border-top: solid 1px #707070;
+    border-bottom: solid 1px #707070;
+}
+
+.checkbox_item {
+    display: block;
+    font-size: 15px;
+    width: 380px;
+    margin: 8px 0 24px 8px;
+}
+
+.checkbox_item input{
+    width: 20px;
+}
+
+label, input[type*="checkbox"] {
+    cursor: pointer;
+    /*指定するとチェックボックスが表示されなくなるためコメントアウト
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    */
+}
+
+.detail_area {
+    margin: 8px 0 8px 8px;
+}
+
+/*
+.btn_submit {
+    width: 300px;
+    padding: 21px 0;
+    background-color: #ffd61a;
+    color: white;
+    font-size: 18px;
+    opacity: 0.7;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.7;
+}
+*/
+/*
+ボタンのアニメーション化対応(SUBMIT→　> →　チェック)
+
+*/
+.submit h3 {
+    color: #fff;
+    font-family: Raleway, Helvetica, sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
+}
+  
+.button {
+    position: relative;
+    height: 60px;
+    width: 300px;
+    background: #ffd61a;
+    border-radius: 8px;
+    text-align: center;
+    margin: 60px auto 0 auto;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+  
+.submit, .arrow {
+    display: inline-block;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+  
+.submit {
+    text-transform: uppercase;
+    margin: 14px 0 0 26px;
+}
+  
+.arrow {
+    position: relative;
+    top: -3px;
+    opacity: 0;
+}
+  
+.line {
+    height: 3px;
+    width: 20px;
+    border-radius: 6px;
+    background: #fff;
+}
+  
+.top {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+  
+.bottom {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin-top: 10px;
+}
+  
+.button:active {
+    -webkit-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    transform: scale(1.3);
+}
+  
+.button.hover .submit {
+    -webkit-transform: translateX(-90px);
+    -moz-transform: translateX(-90px);
+    transform: translateX(-90px);
+    opacity: 0; 
+}
+  
+.button.hover .arrow {
+    -webkit-transform: translateX(-70px);
+    -moz-transform: translateX(-70px);
+    transform: translateX(-70px);
+    opacity: 1;
+}
+  
+.button.active .arrow {
+    opacity: 1;
+    -webkit-transform: rotate(90deg) translateY(70px);
+    -moz-transform: rotate(90deg) translateY(70px);
+    transform: rotate(90deg) translateY(70px);
+}
+  
+.button.active {
+    background: #4CAF50;
+}
+  
+.button.active .submit {
+    opacity: 0;
+}
+  
+.button.active .top {
+    width: 34px;
+}
+  
+.button.active .bottom {
+   margin: 14px 0 0 12px;
+}
+/*------------
+    footer 
+--------------*/
+
+.senior_page {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    background-image: url(../img/bg2.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.senior_heading {
+    color:white;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 60px 0;
+}
+
+.senior_contents {
+    color:white;
+    font-size: 16px;
+} 
+
+.ryu {
+    display: flex;
+    position: absolute;
+    top: 77%;
+    left: 20%;
+
+}
+
+/*------------
+    footer 
+--------------*/
+.footer {
+    background-color: #707070;
+    padding:30px 0;
+}
+
+.footer p {
+    font-size:16px;
+    color: white;
+}
+
