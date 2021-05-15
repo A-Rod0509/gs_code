@@ -1,0 +1,140 @@
+/* ここから下に記載していく */
+@charset "utf-8";
+/* タイトル画面 */
+.title_wrapper {
+    width: 640px;
+    height: 480px;
+    background-image:url(../img/janken_boys.png);
+}
+
+.title_wrapper::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:#fff;  /* 背景カラー */
+  z-index: 9999;  /* 一番手前に */
+  pointer-events: none;  /* 他の要素にアクセス可能にするためにポインターイベントは無効に */
+  opacity: 0;  /* 初期値では非表示 */
+  -webkit-transition: opacity .8s ease;  /* アニメーション時間は 0.8秒 */
+  /*-ms- transition: opacity .8s ease;
+  -moz- transition: opacity .8s ease;*/
+  transition: opacity .8s ease;
+}
+
+/* .fadeoutセレクタがある場合には、レイヤーが表示されるようにopacityを１に設定します。 */
+.title_wrapper.fadeout::after {
+    opacity: 1;
+}
+
+/* ゲーム画面全体のデザイン */
+.title_start {
+    width: 640px;
+    height: 480px;
+    background-image:url(../img/janken_boys.png);
+}
+
+body{
+    background:url(../img/dqwalk.jpg);
+    background-size: 1260px 700px;
+
+}
+
+.game_window {
+    width:550px;
+    height:400px;
+    background-color:black;
+    color:white;
+    text-align: center;
+    margin: 150px auto;    
+}
+
+
+.hero {
+    height: 100px;
+    width: 105px;
+    padding: 5px 0 0 16px;
+}
+
+img.heroImg{
+    height: 100px;
+    width:105px;
+}
+
+.heroStatus {
+    width:100px;
+}
+
+.heroName {
+    border-top:2px solid white; 
+    border-left:2px solid white;
+    border-right:2px solid white;
+}
+.heroHP {
+    border-bottom:2px solid white;
+    border-left:2px solid white;
+    border-right:2px solid white;
+}
+
+
+/* メニュー */
+.game_menu {
+    width:100px;
+    border:3px solid white;
+    border-radius:6px;
+    margin:16px;
+    padding:5px;
+    float:left;
+}
+.game_enemy img{
+    width:200px;
+    height:150px;
+}
+
+.game_enemy img{
+    margin: 15px;
+}
+#message_window {
+    width:300px;
+    border:3px solid white;
+    border-radius:6px;
+    margin: 16px;
+    padding: 25px 16px 25px 16px;
+    float:left;
+    height:38px;
+    overflow:hidden;
+}
+
+/* メニュー用 */
+.menu {
+    cursor:pointer;
+}
+.menu:before {
+    cursor:pointer;
+    content: '　';
+}
+.menu:hover{
+    background-color: gray;
+}
+/* メニュー選択状態 */
+.menu-active:before {
+    content: '';
+}
+
+/*ポップアップ*/
+#element_to_pop_up { 
+    display:none;
+    text-align: center;
+}
+#element_to_pop_up h2{ 
+    font-size: 32px;
+    font-weight: bold;
+}
+#element_to_pop_up .joke{ 
+    font-size: 28px;
+}
+#element_to_pop_up .joke_02{ 
+    font-size: 28px;
+}
