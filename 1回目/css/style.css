@@ -1,41 +1,18 @@
 /* ここから下に記載していく */
 @charset "utf-8";
-/* タイトル画面 */
+
+/*
+    titlepage.html用CSS
+*/
 .title_wrapper {
-    width: 640px;
-    height: 480px;
-    background-image:url(../img/janken_boys.png);
+    width: 1200px;
+    height: 600px;
+    background-color: black;
 }
 
-.title_wrapper::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color:#fff;  /* 背景カラー */
-  z-index: 9999;  /* 一番手前に */
-  pointer-events: none;  /* 他の要素にアクセス可能にするためにポインターイベントは無効に */
-  opacity: 0;  /* 初期値では非表示 */
-  -webkit-transition: opacity .8s ease;  /* アニメーション時間は 0.8秒 */
-  /*-ms- transition: opacity .8s ease;
-  -moz- transition: opacity .8s ease;*/
-  transition: opacity .8s ease;
-}
-
-/* .fadeoutセレクタがある場合には、レイヤーが表示されるようにopacityを１に設定します。 */
-.title_wrapper.fadeout::after {
-    opacity: 1;
-}
-
-/* ゲーム画面全体のデザイン */
-.title_start {
-    width: 640px;
-    height: 480px;
-    background-image:url(../img/janken_boys.png);
-}
-
+/*
+    Janken.Html用CSS
+*/
 body{
     background:url(../img/dqwalk.jpg);
     background-size: 1260px 700px;
@@ -78,6 +55,9 @@ img.heroImg{
     border-right:2px solid white;
 }
 
+.heroImg {
+    background-color: #000000;
+}
 
 /* メニュー */
 .game_menu {
@@ -88,12 +68,12 @@ img.heroImg{
     padding:5px;
     float:left;
 }
-.game_enemy img{
+.enemyStatus img{
     width:200px;
     height:150px;
 }
 
-.game_enemy img{
+.enemyStatus img{
     margin: 15px;
 }
 #message_window {
@@ -127,14 +107,28 @@ img.heroImg{
 #element_to_pop_up { 
     display:none;
     text-align: center;
+    width: 400px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 25px 5px #999;
+    padding: 20px;
 }
-#element_to_pop_up h2{ 
-    font-size: 32px;
+.thanks { 
+    font-size: 22px;
     font-weight: bold;
+    margin-bottom:20px; 
 }
 #element_to_pop_up .joke{ 
-    font-size: 28px;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px 0;    
+    line-height: 1.7;
+    color: red;
+    margin-bottom:20px;
 }
 #element_to_pop_up .joke_02{ 
-    font-size: 28px;
+    display: none;
+    font-size: 22px;
 }

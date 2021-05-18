@@ -5,95 +5,80 @@ const hp = document.getElementById('HitPoint');
 //バイキルトフラグ
 let isOomph = false;
 var msg_buff = '';
+//利用頻度が高いためグローバル変数化
+var music = new Audio();
 
-// ランダム関数でコンピュータが出すジャンケンの手を生成
+// ランダム関数でコンピュータが出す手を生成
 function pc_hands(){
     const num = Math.ceil(Math.random() * 3);
     return num;
 }
 
-// ダメージを受けた際画像を点滅させる。
-function imageBlinking(){
-    setInterval(function(){
-        $('.blink').fadeOut(1200, function(){$(this).fadeIn(200)});
-    }, 1400);
+// ダメージを受けた際一瞬点滅
+function imgBlink(blinkClass){
+    $(blinkClass).css('opacity', '.5').animate({'opacity': '1'}, 'slow');
+}
+
+// 効果音を発生
+function sound(music, path){
+    music.src = path;
+    music.play();
 }
     
-// ジャンケンの結果を判定する関数
+// ジャンケンの結果を判定する関数(グー：1,チョキ：2,パー：3)
 function judge(user_hand, pc_hand){
-    let result = "";
-    var music = new Audio();
-    if(user_hand == pc_hand){
+
+    if( ((user_hand == 1) && (pc_hand == 2)) ||
+        ((user_hand == 2) && (pc_hand == 3)) ||
+        ((user_hand == 3) && (pc_hand == 1)) ){
+        //勝ちの場合
+        sound(music,"./bgm/heroAttack.mp3");
+        imgBlink('.enemyBlink');
+        if(isOomph == true){
+            isOomph = false;
+            message("モンスターに２のダメージ！！");
+            global_monsterHp = global_monsterHp -2;
+            message("バイキルトの効果が解けた！");
+        }else{
+            message("モンスターに１のダメージ！！");    
+            global_monsterHp = global_monsterHp -1;
+        }
+    }else if(user_hand == pc_hand){
         //あいこの場合
-        result = 1;
-    }else if( ((user_hand == 1) && (pc_hand == 2)) ||
-              ((user_hand == 2) && (pc_hand == 3)) ||
-              ((user_hand == 3) && (pc_hand == 1)) ){
-            //勝ちの場合
-            result = 2;
+        sound(music,"./bgm/miss.mp3");
+        message("モンスターは攻撃をかわした！");
+        if(isOomph == true){
+            isOomph = false;
+            message("バイキルトの効果が解けた！");
+        }
     }else{
         // 負けの場合
-        result = 3;
+        sound(music,"./bgm/monsterAttack.mp3");
+        message("勇者は１のダメージ！！");
+        imgBlink('.heroBlink');
+        global_heroHp = global_heroHp -1;
+        hp.innerHTML = `HP:${global_heroHp}`;
     }
-    // resultに応じて処理を実行
-    switch (result) {
-        case 1: //勝ち
-            if(isOomph == true){
-                isOomph = false;
-                music.src = "./bgm/heroAttack.mp3";
-                music.play();
-                message("モンスターに２のダメージ！！");
-                $('.heroImg').addClass('blink');
-                imageBlinking();
-                $('.heroImg').removeClass('blink');
-                global_monsterHp = global_monsterHp -2;
-                message("バイキルトの効果が解けた！");
-            }else{
-                message("モンスターに１のダメージ！！");
-                imageBlinking();
-                global_monsterHp = global_monsterHp -1;
-            }
-            break;
-        case 2: //あいこ
-            music.src = "./bgm/miss.mp3";
-            music.play();
-            message("モンスターは攻撃をかわした！");
-            if(isOomph == true){
-                isOomph = false;
-                message("バイキルトの効果が解けた！");
-            }
-            break;
-        case 3: //負け
-            music.src = "./bgm/monsterAttack.mp3";
-            music.play();
-            message("勇者は１のダメージ！！");
-            $('.enemyImg').addClass('blink');
-            imageBlinking();
-            $('.enemyImg').removeClass('blink');
-            global_heroHp = global_heroHp -1;
-            hp.innerHTML = `HP:${global_heroHp}`;
-            break;
-        default:
-            break;
-    }    
+    // どちらかの体力がなくなったら戦闘終了    
     if( (global_monsterHp <= 0) ||
         (global_heroHp <= 0)){
-        //戦闘終了のBGMを流す。
-        music.src = "./bgm/battleOver.mp3";
-        music.play();
+        //戦闘終了のBGMを流す。少し時間を置きます。
+        sound(music,"./bgm/battleOver.mp3");
         if(global_monsterHp <= 0){
             message("モンスターをやっつけた！！");
+            $('.enemyStatus').css('background-color','#000000');
         }else{
             message("勇者は負けてしまった！！");
+            $('.heroStatus').css('background-color','#000000');
         }
         // GameOver画面をポップアップ
-        
-        $('#element_to_pop_up').bPopup();
-        $("#element_to_pop_up").click(function() {
-            $('.joke').fadeIn('slow');
-        });
-        $("#element_to_pop_up").click(function() {
-            $('.joke_02').fadeIn('slow');
+        // 戦闘後の余韻を残すため3秒ディレイ
+        $('#element_to_pop_up').delay(3000).queue(function(){
+            $('#element_to_pop_up').bPopup({
+                easing: 'easeOutBack', //uses jQuery easing plugin
+                speed: 500,
+                transition: 'slideDown'
+            }).dequeue();
         });
     }
 }
@@ -129,10 +114,15 @@ function message_char()
     //
     setTimeout('message_char()', 30);
 }
+// ジョークの内容はフェードインで表示
+$("#element_to_pop_up").click(function() {
+    sound(music, "./bgm/noroi.mp3");
+    $('.joke').fadeIn('slow');
+    $('.joke_02').delay(3000).fadeIn('slow');
+});
 
+//画面のグー、チョキ、パーを押されたら実行
 $('.command').click(function() {
-
-    
     //クリックした要素からid名を取得
     let commandId = $(this).attr('id');
     let user_hand = 0;
@@ -151,6 +141,7 @@ $('.command').click(function() {
             break;
         case "command4": 
             //バイキルトフラグを立ててリターン
+            sound(music,"./bgm/oomph.mp3");
             isOomph = true;
             message("勇者はバイキルトを唱えた！！");
             return 1;
@@ -173,7 +164,6 @@ $('#HitPoint').ready(function(){
 $('#enemyImg').ready(function(){
     //モンスターのHP(1～5)
     global_monsterHp = Math.floor(Math.random() * 1) + 4;
-
     //モンスターの画像をランダムに設定
     const enemyImage = document.getElementById('enemyImg');
     const imgs = ["img/monster_01.jpg", "img/monster_02.jpg", "img/monster_03.jpg"];
