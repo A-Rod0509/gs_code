@@ -20,7 +20,7 @@
 
 * 天気の情報を外部APIで取得する方法  
 <https://hiyo-code.com/openweathermap-api/>
-<https://openweathermap.org/current>
+<https://openweathermap.org/current>  
 ※指定した日時の情報を取得したかったのですが、
 　外部APIが実行された日時しか取得できなさそう。。。
 
@@ -36,5 +36,5 @@
 * jQueryで特定文字列が含まれているか判定する方法  
 <https://hajimete.org/jquery-tokutei-moziretu>  
 
-* AWSのlamda関数の利用
+* AWSのlamda関数の利用  
 https://qiita.com/tamura_CD/items/46ba8a2f3bfd5484843f
