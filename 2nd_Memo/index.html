@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>テニスノート</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <header>
+      <h1>テニスノート</h1>
+    </header>
+    <main>
+      <!--タイトル、日時、場所、天候-->
+      <p class="dateTitle">日にち：<input type="date" id="date" /></p>
+      <ul class="time">
+        <li id="timeList" class="timeList">開始：<input type="time" id="startTime" class="delete"/></li>
+        <li id="timeList" class="timeList">終了：<input type="time" id="endTime" class="delete"/></li>
+      </ul>
+      <p>タイトル：<input type="text" id="title" class="delete" value="テニス"/></p>
+      <p>場所：<select name="place" id="place"></p>
+        <option class="placeMenu" value="#">場所を選択してください</option>
+        <option class="placeMenu" value="Tokyo">木場公園テニスコート</option>
+        <option class="placeMenu" value="Kawasaki">富士見公園テニスコート</option>
+        <option class="placeMenu" value="Yokohama">新横浜公園テニスコート</option>
+      </select>
+      <ul id="weatherList">
+        <li class="#">天気：<input id="weather" type="text" class="delete"/></li>
+        <li class="#">風速(m/s)：<input id="wind" type="text" class="delete"/></li>
+      </ul>
+      <!--ゲームの設定-->
+      <ul id="gameStyle">
+        <li id="singles" class="singles game">シングルス</li>
+        <li id="doubles" class="doubles game">ダブルス</li>
+      </ul>
+      <ul id="cortSurface">
+        <li id="hard" class="surface">ハード</li>
+        <li id="omni" class="surface">オムニ</li>
+        <li id="cray" class="surface">クレー</li>
+        <li id="carpet" class="surface">カーペット</li>
+      </ul>
+      <ul id="setCount">
+        <li id="setCount1" class="setCount">1set</li>
+        <!--
+        <li id="setCount3" class="setCount">3set</li>
+        <li id="setCount5" class="setCount">5set</li>
+        -->
+      </ul>
+      
+      <ul id="player"><p>プレイヤー</p>
+        <li id="userSide">
+          <input type="text" id="userName" />
+        </li>
+        <p>VS</p>
+        <li id="opponentSide">
+          <input type="text" id="opponentName" />
+        </li>
+      </ul>
+      <ul id="score"><p>スコア</p>
+        <li id="userScore">
+          <input type="number" min=0 max=6 id="uScore" />
+        </li>
+        <li id="opponentScore">
+          <input type="number" min=0 max=6 id="oScore" />
+        </li>
+      </ul>
+      <textarea id="tennisMemo" class="memo"></textarea>
+      <ul>
+        <li id="save">保存</li>
+        <li id="cansel">破棄</li>
+      </ul>
+
+    </main>
+    <table id="list">
+      <!-- ここに追加データが挿入される -->
+    </table>
+
+    <ul>
+        <li id="allClear">一括削除</li>
+    </ul>
+
+    <footer><small></small></footer>
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/main.js"></script>
+
+  </body>
+</html>
