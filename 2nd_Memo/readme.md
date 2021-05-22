@@ -1,38 +1,39 @@
-# �e�j�X�m�[�g  
-## �@�ۑ���e�i�ǂ�ȍ�i���j-�K�v����Α�����@��������ɋL��  
-�e�j�X�m�[�g�A�v�����쐬���܂����B  
-�L�������������ʂ�localstrage��ɕۑ����܂��B  
-�u�ҏW�v�{�^�����������Ƃŕۑ��ς̓��e����ҏW���邱�Ƃ��ł��܂��B  
+# テニスノート  
+## ①課題内容（どんな作品か）-必要あれば操作方法等こちらに記載  
+テニスノートアプリを作成しました。  
+記入した試合結果をlocalstrage上に保存します。  
+「編集」ボタンを押すことで保存済の内容から編集することができます。  
 
-## �A�H�v�����_�E����������_  
-* �O��API��p���ď����͂̎�Ԃ��팸�B  
-* lamda�֐��Ńe�j�X�R�[�g�̏���ǉ�(�ł��Ȃ�����)  
+## ②工夫した点・こだわった点  
+* 外部APIを用いて情報入力の手間を削減。  
+* lamda関数でテニスコートの情報を追加(できなかった)  
 
-## �B����E�^��i����΁j
-* AWS���lamda�֐����쐬���邱�Ƃ͂ł������AURL�ɑ΂��A  
-�@GET���\�b�h�����s���Ă�MLHttpRequest���u���b�N����Ă��܂��A  
-�@�l���擾�ł��܂���ł����B����������������Ώ�����܂��B  
+## ③質問・疑問（あれば）
+* AWS上でlamda関数を作成することはできたが、URLに対し、  
+　GETメソッドを実行してもMLHttpRequestがブロックされてしまい、  
+　値を取得できませんでした。ご教示いただければ助かります。  
 
-## �C���̑��i���z�A�V�F�A���������ƂȂ�ł��j  
-�����̃X�^�b�c���̏o�͂܂Ŏ肪���Ȃ������B  
+## ④その他（感想、シェアしたいことなんでも）  
+試合のスタッツ情報の出力、HTMLの表示部分の整理をしたかったが手が回らなかった。  
+下記、課題作成にあたって参考にしたサイトです。
 
-* �V�C�̏����O��API�Ŏ擾������@  
+* 天気の情報を外部APIで取得する方法  
 <https://hiyo-code.com/openweathermap-api/>
 <https://openweathermap.org/current>
-���w�肵�������̏����擾�����������̂ł����A
-�@�O��API�����s���ꂽ���������擾�ł��Ȃ������B�B�B
+※指定した日時の情報を取得したかったのですが、
+　外部APIが実行された日時しか取得できなさそう。。。
 
-* select�v�f�̑I���E�擾�E�ǉ����@
+* select要素の選択・取得・追加方法
 https://www.sejuku.net/blog/44811
 
-* �N���b�N���ꂽ�e�[�u���̈ʒu�iX�sX��ځj���擾������@
+* クリックされたテーブルの位置（X行X列目）を取得する方法
 https://thr3a.hatenablog.com/entry/20140904/1409819152
 
-* appendChild�ɂ��t�H�[����ǉ�
+* appendChildによるフォームを追加
 https://web-tsuku.life/add-form-appendchild/
 
-* jQuery�œ��蕶���񂪊܂܂�Ă��邩���肷����@
+* jQueryで特定文字列が含まれているか判定する方法
 https://hajimete.org/jquery-tokutei-moziretu
 
-* AWS��lamda�֐��̗��p
+* AWSのlamda関数の利用
 https://qiita.com/tamura_CD/items/46ba8a2f3bfd5484843f
