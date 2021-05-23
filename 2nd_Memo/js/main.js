@@ -9,6 +9,7 @@ let keyOScore;
 //valueデータ
 let valueSTime;
 let valueETime;
+let valuePlace;
 let valueWether;
 let valueWindSpeed;
 let valueGame;
@@ -38,7 +39,8 @@ $(document).ready(function(){
 */
 $("#place").on("change", function() {
   isFnOp = 0;
-  let targetCityName = $('option:selected').val();
+  valuePlace = $("option:selected").val();
+  let targetCityName = $("option:selected").attr('class');
   let appId = "97f2a97949c7e86968b41bdcfcd483ff";
   const requestUrl =
       "https://api.openweathermap.org/data/2.5/weather?APPID=" +
@@ -52,7 +54,7 @@ $("#place").on("change", function() {
 });
 
 /* XMLHttpRequestがブロックされるため要調査
-//lamdaにてテニスコート情報を取得
+//lamda上に保存したテニスコート情報を取得
 $(document).ready(function(){
   //lamdaの処理を入れ込む
   const lamdaUrl = "https://khtpkiihzk.execute-api.ap-northeast-1.amazonaws.com/production/test"
@@ -113,6 +115,7 @@ $("#save").on("click", function () {
   const valueObj = {
       startTime: valueSTime,
       endTime: valueETime,
+      place: valuePlace,
       weather: valueWether,
       wind: valueWindSpeed,
       gameStyle: valueGame,
@@ -124,8 +127,8 @@ $("#save").on("click", function () {
   };
 
   //key、ValueをJSON形式に変換
-  const jsonKey = JSON.stringify(keyObj);
-  const jsonValue = JSON.stringify(valueObj);
+  let jsonKey = JSON.stringify(keyObj);
+  let jsonValue = JSON.stringify(valueObj);
   //JSONデータをローカルストレージに格納
   localStorage.setItem(jsonKey, jsonValue);
 
@@ -138,39 +141,43 @@ $("#save").on("click", function () {
     削除
     </td></tr>`;
   $("#list").append(html);
+
+  alert("セーブ完了しました！");
 });
 
-//キャンセルイベント
-$("#cancel").on("click", function () {
-  alert("入力中の内容を破棄しました");
-  $(".delete").val("");
-  $("#cortSurface, #setCount").removeClass("selected");
+//入力リセットイベント
+$("#reset").on("click", function () {
+  reset();
+  alert("入力内容をリセットしました！");
 });
 
 //一括削除イベント
 $("#allClear").on("click", function () {
   localStorage.clear();
   $("#list").empty();
+  alert("指定の履歴内容を破棄しました！");
 });
 
 //削除イベント
 $(document).on("click", "#clear", function () {
-  //クリックされた行番号の取得
-  const row = $(this).closest('tr').index();
-  //指定した行番号のkeyデータの取得
-  const key = localStorage.key(row);
+  //クリックされた列番号の取得
+  const col = $(this).closest('tr').index();
+  //クリックされた列番号のkeyデータ取得、削除
+  const key = localStorage.key(col);
   localStorage.removeItem(key);
-  //HTMLのListから指定した行番号の情報を削除
-  let col = $(this).closest("tr").remove();
+  //クリックされた列番号のList(履歴、編集、削除)削除
+  $(this).closest("tr").remove();
 });
 
 //編集イベント
 $(document).on("click", "#edit", function () {
-  //クリックされた行番号の取得
-  const row = $(this).closest('tr').index();
-  //指定した行番号のkeyデータの取得
-  const key = localStorage.key(row);
-  //指定した行番号のvalueデータの取得
+  //入力内容のリセット
+  reset();
+  //クリックされた列の取得
+  const col = $(this).closest('tr').index();
+  //指定した列のkeyデータの取得
+  const key = localStorage.key(col);
+  //指定した列のvalueデータの取得
   const value = localStorage.getItem(key);
   //JSONデータ→オブジェクトに変更
   const keyObj = JSON.parse(key);
@@ -196,7 +203,7 @@ function setToday() {
   $("#date").val(yyyy+'-'+mm+'-'+dd); 
 }
 
-//桁数を制限
+//桁数の制限
 function sliceMaxLength(elem, maxLength) {  
   elem.value = elem.value.slice(0, maxLength);  
 } 
@@ -272,7 +279,7 @@ function setValueDate(){
   valueMemo = $("#tennisMemo").val();
 }
 
-//取得したkeyデータをHTMLに反映
+//localstorageのkeyデータをHTMLに反映
 function renderKeyData(key) {
   $("#date").val(key.date);
   $("#title").val(key.title);
@@ -280,10 +287,11 @@ function renderKeyData(key) {
   $("#oScore").val(key.opponentScore);
 }
 
-//取得したkeyデータをHTMLに反映
+//localstorageのkeyデータをHTMLに反映
 function renderKeyValue(value) {
   $("#startTime").val(value.startTime);
   $("#endTime").val(value.endTime);
+  $("#place").val(value.place);
   $("#weather").val(value.weather);
   $("#wind").val(value.wind);
   $("#gameStyle li:contains("+value.gameStyle+")").addClass("selected");
@@ -294,10 +302,15 @@ function renderKeyValue(value) {
   $("#tennisMemo").val(value.memo);
 }
 
+function reset(){
+  $(document).find(".delete").val("");
+  $("#place").val(0);
+  $("#gameStyle, #cortSurface, #setCount").find(".selected").removeClass("selected");
+}
 
 //ページ読み込み時、取得済みの保存データ表示
 function loadPage(){
-  //ゴミが残らないようにListの中身を一度クリア
+  //Listの中身を一度クリア
   $("#list").empty();
   for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);

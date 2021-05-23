@@ -34,7 +34,10 @@ GETメソッドを実行してもMLHttpRequestがブロックされてしまい�
 <https://web-tsuku.life/add-form-appendchild/>  
 
 * jQueryで特定文字列が含まれているか判定する方法  
-<https://hajimete.org/jquery-tokutei-moziretu>  
+<https://hajimete.org/jquery-tokutei-moziretu> 
+
+* 忘れっぽい人のためのjQueryでよく使う関数逆引き  
+https://qiita.com/maruyam-a/items/7643cb68e99f4ef925ea
 
 * AWSのlamda関数の利用  
 https://qiita.com/tamura_CD/items/46ba8a2f3bfd5484843f

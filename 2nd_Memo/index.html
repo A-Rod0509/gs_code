@@ -14,26 +14,26 @@
     </header>
     <main>
       <!--タイトル、日時、場所、天候-->
-      <p class="dateTitle">日にち：<input type="date" id="date" /></p>
+      <p class="dateTitle">日にち：<input type="date" id="date" class="delete"></p>
       <ul class="time">
-        <li id="timeList" class="timeList">開始：<input type="time" id="startTime" class="delete"/></li>
-        <li id="timeList" class="timeList">終了：<input type="time" id="endTime" class="delete"/></li>
+        <li id="timeList" class="timeList">開始：<input type="time" id="startTime" class="delete"></li>
+        <li id="timeList" class="timeList">終了：<input type="time" id="endTime" class="delete"></li>
       </ul>
-      <p>タイトル：<input type="text" id="title" class="delete" value="テニス"/></p>
+      <p>タイトル：<input type="text" id="title" class="delete" value="テニス"></p>
       <p>場所：<select name="place" id="place"></p>
-        <option class="placeMenu" value="#">場所を選択してください</option>
-        <option class="placeMenu" value="Tokyo">木場公園テニスコート</option>
-        <option class="placeMenu" value="Kawasaki">富士見公園テニスコート</option>
-        <option class="placeMenu" value="Yokohama">新横浜公園テニスコート</option>
+        <option  value="0">場所を選択してください</option>
+        <option class="Tokyo" value="1">木場公園テニスコート</option>
+        <option class="Kawasaki" value="2">富士見公園テニスコート</option>
+        <option class="Yokohama" value="3">新横浜公園テニスコート</option>
       </select>
       <ul id="weatherList">
-        <li class="#">天気：<input id="weather" type="text" class="delete"/></li>
-        <li class="#">風速(m/s)：<input id="wind" type="text" class="delete"/></li>
+        <li class="#">天気：<input id="weather" type="text" class="delete"></li>
+        <li class="#">風速(m/s)：<input id="wind" type="text" class="delete"></li>
       </ul>
       <!--ゲームの設定-->
       <ul id="gameStyle">
-        <li id="singles" class="singles game">シングルス</li>
-        <li id="doubles" class="doubles game">ダブルス</li>
+        <li id="singles" class="singles">シングルス</li>
+        <li id="doubles" class="doubles">ダブルス</li>
       </ul>
       <ul id="cortSurface">
         <li id="hard" class="surface">ハード</li>
@@ -51,25 +51,25 @@
       
       <ul id="player"><p>プレイヤー</p>
         <li id="userSide">
-          <input type="text" id="userName" />
+          <input type="text" id="userName" class="delete">
         </li>
         <p>VS</p>
         <li id="opponentSide">
-          <input type="text" id="opponentName" />
+          <input type="text" id="opponentName" class="delete">
         </li>
       </ul>
       <ul id="score"><p>スコア</p>
         <li id="userScore">
-          <input type="number" min=0 max=6 id="uScore" />
+          <input type="number" min=0 max=6 id="uScore" class="delete">
         </li>
         <li id="opponentScore">
-          <input type="number" min=0 max=6 id="oScore" />
+          <input type="number" min=0 max=6 id="oScore" class="delete">
         </li>
       </ul>
-      <textarea id="tennisMemo" class="memo"></textarea>
+      <textarea id="tennisMemo" class="memo delete"></textarea>
       <ul>
         <li id="save">保存</li>
-        <li id="cansel">破棄</li>
+        <li id="reset">入力リセット</li>
       </ul>
 
     </main>
